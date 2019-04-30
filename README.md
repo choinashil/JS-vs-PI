@@ -1,4 +1,43 @@
-# Javascript vs Python
+# Python vs Javascript
+
+- 파이썬과 자바스크립트의 기초 문법을 비교합니다. 
+- 자바스크립트를 먼저 학습한 상태에서 둘의 다른 점 위주로 정리했습니다. 
+- 내용 추가 중입니다. 
+
+## Index
+- [Print](#Print)
+- [Input](#Input)
+- [Type Check](#Type-Check)
+- [Type Casting](#Type-Casting)
+- [String](#String)
+  - [line break](#line-break)
+  - [len('str')](#len('str'))
+  - [str.slice()](#str.slice())
+  - [str.format()](#str.format())
+  - [f-string (3.6v+)](#f-string-(3.6v+))
+  - [str.upper() / str.lower()](#str.upper()-/-str.lower())
+  - [str.strip()](#str.strip())
+  - [str.count()](#str.count())
+  - [str.find() / str.rfind()](#str.find()-/-str.rfind())
+  - [str.index()](#str.index())
+  - [str.replace()](#str.replace())
+  - [str.split()](#str.split())
+  - [join](#join)
+  - [str1 in str2](#str1-in-str2)
+  - [str.is~~()](#str.is~~())
+- [Number](#Number)
+  - [//](#//)
+  - [\*\*](#\*\*)
+- [Boolean](#Boolean)
+  - [not](##not)
+- [Conditions](#Conditions)
+  - [If statement](#If-statement)
+  - [short hand If](#short-hand-If)
+  - [short hand If ... Else](#short-hand-If-...-Else)
+  - [Ternary](#Ternary)
+- [Loop](#Loop)
+  - [While loop](#While-loop)
+<br />
 
 ### Print
 ```python
@@ -54,18 +93,8 @@ parseFloat(b); // 52.2
 parseInt(c); // NaN
 ```
 
-### String
-- len('str')
-```python
-# PY
-len('abcde')
-```
-```javascript
-// JS
-'abcde'.length;
-```
-
-- line break
+## String
+### line break
 ```python
 # PY
 multiline = '''
@@ -74,7 +103,17 @@ You need python
 '''
 ```
 
-- str.slice()
+### len('str')
+```python
+# PY
+len('abcde') # 5
+```
+```javascript
+// JS
+'abcde'.length; // 5
+```
+
+### str.slice()
 ```python
 # PY
 'abcde'[0:2] # ab
@@ -87,7 +126,7 @@ You need python
 'abcde'.slice(0, 2); // ab
 ```
 
-- str.format()
+### str.format()
 ```python
 # PY
 result = '{}'.format(11)
@@ -114,29 +153,26 @@ print(c) # '1 문자 True'
 # "Hey, Hank. It's 3PM."
 ```
 
-- f-string (3.6v+)
+### f-string (3.6v+)
 ```python
 # PY
 name = 'Sarah'
 sister = '\'s sister'
 age = 27
 
-f'{name} is {age} years old.' 
+f'{name} is {age} years old.'
 # 'Sarah is 27 years old.'
-f'{name} will be {age + 1} years old next year.' 
+f'{name} will be {age + 1} years old next year.'
 # 'Sarah will be 28 years old next year.'
 f'{name + add} will be {age + 3} years old next year.'
 # "Sarah's sister will be 30 years old next year."
 
 d = {'name': 'Sarah', 'age': 27} # dictionary
-f'{d["name"]} will be {d["age"] + 1} years old next year.' 
+f'{d["name"]} will be {d["age"] + 1} years old next year.'
 # 'Sarah will be 28 years old next year.'
-
-sentence = f'I like {fruit}.'
-fruit = 'mango'
 ```
 
-- str.upper() / str.lower()
+### str.upper() / str.lower()
 ```python
 # PY
 word = 'abcde'
@@ -156,7 +192,7 @@ str.toUpperCase(); // 'ABC'
 console.log(str); // 'abc'
 ```
 
-- str.strip()
+### str.strip()
 ```python
 # PY
 a = '''
@@ -170,7 +206,7 @@ var str = '    abc  ';
 str.trim(); // 'abc'
 ```
 
-- str.count()
+### str.count()
 ```python
 # PY
 fruit = 'banana'
@@ -183,16 +219,16 @@ var result = fruit.match(/a/g); // ["a", "a", "a"]
 result.length; //3
 ```
 
-- str.find() / str.rfind()
+### str.find() / str.rfind()
 ```python
 # PY
 fruit = 'banana'
 fruit.find('n') # 2
 fruit.rfind('n') # 4
-fruit.find('c') # 없으면 -1 
+fruit.find('c') # 없으면 -1
 ```
 
-- str.index()
+### str.index()
 ```python
 # PY
 fruit = 'banana'
@@ -206,7 +242,7 @@ fruit.indexOf('n'); // 2
 fruit.indexOf('c'); // -1
 ```
 
-- str.replace()
+### str.replace()
 ```python
 # PY
 a = 'Life is too short'
@@ -219,7 +255,7 @@ var a = 'Life is too short';
 a.replace('Life', 'Your leg'); // 'Your leg is too short'
 ```
 
-- str.split()
+### str.split()
 ```python
 # PY
 a = 'Life is too short'
@@ -238,7 +274,7 @@ a.split(' '); // ["Life", "is", "too", "short"]
 a.split('i'); // ["L", "fe ", "s too short"]
 ```
 
-- join
+### join
 ```python
 # PY
 ','.join('abcd') # 'a,b,c,d'
@@ -254,7 +290,7 @@ arr.join(''); // 'abcd'
 arr.join(' '); // 'a b c d'
 ```
 
-- str1 in str2
+### str1 in str2
 ```python
 # PY
 a = 'Life is too short'
@@ -270,7 +306,7 @@ a.includes('life'); // false
 a.includes('Like'); // false
 ```
 
-- str.is~~()
+### str.is~~()
 ```python
 # PY
 a = '12ab@#'
@@ -289,8 +325,8 @@ e.islower() # False
 f.isupper() # True
 ```
 
-### Number
-- // (나눗셈 후 몫 반환)
+## Number
+### //
 ```python
 # PY
 print(3 // 2) # 1
@@ -301,7 +337,7 @@ var num = 3.23123;
 Math.floor(num); // 3
 ```
 
-- ** (제곱 연산자)
+### **
 ```python
 # PY
 print(2 ** 3) # 8
@@ -311,8 +347,8 @@ print(2 ** 3) # 8
 Math.pow(2, 3); // 8
 ```
 
-### Boolean
-- not
+## Boolean
+### not
 ```python
 # PY
 not True # False
@@ -326,17 +362,77 @@ not not True # True
 !!true // true
 ```
 
-### Conditional Statement
+## Conditions
+### If statement
 ```python
 # PY
-month = 7
-if 3 <= month <= 5:
-  print('spring')
-elif 6 <= month <= 8:
-  print('summer')
-elif 9 <= month <= 11:
-  print('autumn')
+a = 200
+b = 33
+
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
 else:
-  print('winter')
-# summer
+  print("a is greater than b")
+```
+
+### short hand If
+```python
+# PY
+a = 200
+b = 33
+
+if a > b: print('a is greater than b') # 'a is greater than b'
+```
+```javascript
+// JS
+var a = 200;
+var b = 33;
+
+if (a > b) console.log('a is greater than b'); // 'a is greater than b'
+```
+
+### short hand If ... Else
+```python
+# PY
+a = 200
+b = 33
+
+print('A') if a > b else print('B') # A
+```
+```javascript
+// JS
+var a = 200;
+var b = 33;
+
+a > b ? console.log('A') : console.log('B'); // A
+```
+
+### Ternary
+```python
+# PY
+a = 200
+b = 33
+
+print('A') if a > b else print('=') if a == b else print('B')
+```
+```javascript
+// JS
+var a = 200;
+var b = 33;
+
+a > b ? console.log('A') : a === b ? console.log('=') : console.log('B');
+```
+
+## Loop
+### While loop
+```python
+# PY
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+
+# 1 2 3 4 5
 ```
