@@ -16,6 +16,9 @@
   - [str.format()](#str.format())
   - [f-string (3.6v+)](#f-string-(3.6v+))
   - [str.upper() / str.lower()](#str.upper()-/-str.lower())
+  - [str.capitalize()](#str.capitalize())
+  - [str.title()](#str.title())
+  - [str.swapcase()](#str.swapcase())
   - [str.strip()](#str.strip())
   - [str.count()](#str.count())
   - [str.find() / str.rfind()](#str.find()-/-str.rfind())
@@ -26,10 +29,32 @@
   - [str1 in str2](#str1-in-str2)
   - [str.is~~()](#str.is~~())
 - [Number](#Number)
+  - [/](#/)
   - [//](#//)
   - [\*\*](#\*\*)
+  - [abs](#abs)
 - [Boolean](#Boolean)
-  - [not](##not)
+  - [not](#not)
+- [List](#List)
+  - [create list](#create-list)
+  - [index](#index)
+  - [slice](#slice)
+  - [list.append()](#list.append())
+  - [list.extend()](#list.extend()-/-+=)
+  - [list.insert()](#list.insert())
+  - [list.remove()](#list.remove())
+  - [list.pop()](#list.pop())
+  - [del](#del)
+  - [list.clear()](#list.clear())
+  - [list.index()](#list.index())
+  - [in](#in)
+  - [list.count()](#list.count())
+  - [list.sort() / sorted(list)](#list.sort()-/-sorted(list))
+  - [len(list)](#len(list))
+  - [copy](#copy)
+- [Tuple](#Tuple)
+  - [create tuple](#create-tuple)
+  - [unpacking](#unpacking)
 - [Conditions](#Conditions)
   - [If statement](#If-statement)
   - [short hand If](#short-hand-If)
@@ -53,7 +78,7 @@ console.log();
 ```python
 # PY
 value = input('입력: ')
-print(type(value)) # <class 'str'>
+type(value) # <class 'str'>
 ```
 
 ### Type Check
@@ -116,14 +141,16 @@ len('abcde') # 5
 ### str.slice()
 ```python
 # PY
-'abcde'[0:2] # ab
-'abcde'[2:] # cde
-'abcde'[:2] # ab
-'abcde'[3:-1] # d
+'abcde'[0:2] # 'ab'
+'abcde'[2:] # 'cde'
+'abcde'[:2] # 'ab'
+'abcde'[3:-1] # 'd'
+'abcde'[::2] # 'ace'
+'abcde'[::-1] # 'edcba'
 ```
 ```javascript
 // JS
-'abcde'.slice(0, 2); // ab
+'abcde'.slice(0, 2); // 'ab'
 ```
 
 ### str.format()
@@ -192,6 +219,27 @@ str.toUpperCase(); // 'ABC'
 console.log(str); // 'abc'
 ```
 
+### str.capitalize()
+```python
+# PY
+a = 'a duck goes into a bar'
+a.capitalize() # 'A duck goes into a bar'
+```
+
+### str.title()
+```python
+# PY
+a = 'a duck goes into a bar'
+a.title() # 'A Duck Goes Into A Bar'
+```
+
+### str.swapcase()
+```python
+# PY
+a = 'abCDEfg'
+a.swapcase() # 'ABcdeFG'
+```
+
 ### str.strip()
 ```python
 # PY
@@ -199,6 +247,9 @@ a = '''
   hello        '''
 a.strip() # 'hello'
 print(a) # '\n  hello        '
+
+b = 'aaabbcca'
+b.strip('a') # 'bbcc'
 ```
 ```javascript
 // JS
@@ -326,10 +377,20 @@ f.isupper() # True
 ```
 
 ## Number
+### / 
+```python
+# PY
+print(5 / 0) # ZeroDivisionError: division by zero
+```
+```javascript
+// JS
+console.log(5 / 0); // Infinity
+```
+
 ### //
 ```python
 # PY
-print(3 // 2) # 1
+3 // 2 # 1
 ```
 ```javascript
 // JS
@@ -340,11 +401,25 @@ Math.floor(num); // 3
 ### **
 ```python
 # PY
-print(2 ** 3) # 8
+2 ** 3 # 8
+pow(2, 3) # 8
 ```
 ```javascript
 // JS
 Math.pow(2, 3); // 8
+```
+
+### abs
+```python
+# PY
+abs(-1) # 1
+
+import math
+math.fabs(-1) # 1.0
+```
+```javascript
+// JS
+Math.abs(-1); // 1
 ```
 
 ## Boolean
@@ -360,6 +435,341 @@ not not True # True
 !true // false
 !false // true
 !!true // true
+```
+
+## List
+### create list
+```python
+# PY
+empty_list = []
+another_empty_list = list()
+
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+
+list('cat') # ['c', 'a', 't']
+
+t = ('a', 'b', 'c') # tuple
+list(t) # ['a', 'b', 'c']
+```
+```javascript
+// JS
+var empty_array = []
+var another_empty_array = new Array()
+
+var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+```
+
+### index
+```python
+# PY
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+weekdays[0] # 'Mon'
+weekdays[-1] # 'Fri'
+```
+```javascript
+// JS
+var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+weekdays[0]; // 'Mon'
+weekdays[-1]; // undefined
+weekdays[weekdays.length - 1]; // 'Fri'
+```
+
+### slice
+```python
+# PY
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+weekdays[0:2] # ['Mon', 'Tue']
+weekdays[::2] # ['Mon', 'Wed', 'Fri']
+weekdays[::-1] # ['Fri', 'Thu', 'Wed', 'Tue', 'Mon']
+
+weekdays # ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] -> 원본 그대로 유지
+```
+```javascript
+// JS
+var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+weekdays.slice(0, 2); // ["Mon", "Tue"]
+weekdays // ["Mon", "Tue", "Wed", "Thu", "Fri"] -> 원본 그대로 유지
+
+weekdays.reverse(); // ["Fri", "Thu", "Wed", "Tue", "Mon"]
+weekdays // ["Fri", "Thu", "Wed", "Tue", "Mon"] -> 원본 변경
+```
+
+### list.append()
+```python
+# PY
+week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+week.append('Sat') 
+week # ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+```
+```javascript
+// JS
+var week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+week.push('Sat'); // 6
+week // ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+```
+
+### list.extend() / +=
+```python
+# PY
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+weekend = ['Sat', 'Sun']
+
+weekdays.extend(weekend) 
+weekdays # ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+weekdays += weekend 
+weekdays # ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+```
+```javascript
+// JS
+var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+var weekend = ['Sat', 'Sun'];
+
+weekdays.concat(weekend); // ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+weekdays; // ["Mon", "Tue", "Wed", "Thu", "Fri"] -> 원본 그대로 유지
+
+weekdays.push(...weekend); // 7
+weekdays; // ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+```
+
+### list.insert()
+```python
+# PY
+alphabet = ['a', 'c', 'd', 'e']
+alphabet.insert(1, 'b') 
+alphabet # ['a', 'b', 'c', 'd', 'e']
+alphabet.insert(10, 'z')
+alphabet # ['a', 'b', 'c', 'd', 'e', 'z']
+```
+```javascript
+// JS
+var alphabet = ['a', 'c', 'd', 'e'];
+alphabet.splice(1, 0, 'b'); // []
+alphabet; // ["a", "b", "c", "d", "e"]
+```
+
+### list.remove()
+```python
+# PY
+alphabet = ['a', 'a', 'b', 'c', 'd', 'e']
+alphabet.remove('b') 
+alphabet # ['a', 'a', 'c', 'd', 'e']
+alphabet.remove('a')
+alphabet # ['a', 'c', 'd', 'e']
+alphabet.remove('b') # ValueError: list.remove(x): x not in list
+```
+
+### list.pop()
+```python
+# PY
+alphabet = ['a', 'b', 'c', 'd', 'e']
+alphabet.pop() # 'e'
+alphabet # ['a', 'b', 'c', 'd']
+alphabet.pop(-1) # 'd'
+alphabet # ['a', 'b', 'c']
+alphabet.pop(0) # 'a'
+alphabet # ['b', 'c']
+
+empty_list = []
+empty_list.pop() # IndexError: pop from empty list
+```
+```javascript
+// JS
+var alphabet = ['a', 'b', 'c', 'd', 'e'];
+alphabet.pop(); // "e"
+alphabet; // ["a", "b", "c", "d"]
+alphabet.shift(); // "a"
+alphabet; // ["b", "c", "d"]
+
+var empty_array = [];
+empty_array.pop(); // undefined
+```
+
+### del
+```python
+# PY
+alphabet = ['a', 'b', 'c', 'd', 'e']
+del(alphabet[2])
+alphabet # ['a', 'b', 'd', 'e']
+
+alphabet = ['a', 'b', 'c', 'd', 'e']
+del(alphabet[0:2])
+alphabet # ['c', 'd', 'e']
+
+alphabet = ['a', 'b', 'c', 'd', 'e']
+del(alphabet[:])
+alphabet # []
+```
+
+```javascript
+// JS
+var alphabet = ['a', 'b', 'c', 'd', 'e'];
+alphabet.splice(0, 2); // ["a", "b"]
+alphabet; // ["c", "d", "e"]
+
+alphabet.splice(0); // ["c", "d", "e"]
+alphabet; // []
+```
+
+### list.clear()
+```python
+# PY
+alphabet = ['a', 'b', 'c', 'd', 'e']
+alphabet.clear()
+alphabet # []
+```
+
+### list.index()
+```python
+# PY
+names = ['Smith', 'Maria', 'John', 'Tracy']
+names.index('Maria') # 1
+```
+```javascript
+// JS
+var names = ['Smith', 'Maria', 'John', 'Tracy'];
+names.indexOf('Maria'); // 1
+```
+
+### in
+```python
+# PY
+names = ['Smith', 'Maria', 'John', 'Tracy']
+'John' in names # True
+'Emily' in names # False
+```
+```javascript
+// JS
+var names = ['Smith', 'Maria', 'John', 'Tracy'];
+names.includes('John'); // true
+names.includes('Emily'); // false
+```
+
+### list.count()
+```python
+names = ['Smith', 'Maria', 'John', 'Tracy']
+names.count('John') # 1
+names.count('Emily') # 0
+
+hellos = ['hello', 'hello', 'hello']
+hellos.count('hello') # 3
+```
+```javascript
+// JS
+var names = ['Smith', 'Maria', 'John', 'Tracy'];
+var count = 0;
+for (var i = 0; i < names.length; i++) {
+	if (names[i] === 'John') {
+		count++;
+	}
+}
+console.log('count', count); # 1
+```
+
+### list.sort() / sorted(list)
+```python
+# PY
+alphabet = ['d', 'a', 'b', 'c']
+alphabet.sort()
+alphabet # ['a', 'b', 'c', 'd'] -> 원본 배열 수정
+
+alphabet = ['d', 'a', 'b', 'c']
+sorted(alphabet) # ['a', 'b', 'c', 'd'] -> 복사본 반환
+alphabet # ['d', 'a', 'b', 'c']
+
+numbers = [10, 1, 13, 1.3, 2, 2.222]
+numbers.sort
+numbers # [1, 1.3, 2, 2.222, 10, 13]
+
+numbers = [10, 1, 13, 1.3, 2, 2.222]
+numbers.sort(reverse=True)
+numbers # [13, 10, 2.222, 2, 1.3, 1]
+```
+```javascript
+// JS
+var alphabet = ['d', 'a', 'b', 'c'];
+alphabet.sort(); // ["a", "b", "c", "d"]
+alphabet; // ["a", "b", "c", "d"] -> 원본 배열 수정
+
+var numbers = [10, 1, 13, 3, 2, 22];
+numbers.sort(); // [1, 10, 13, 2, 22, 3]
+numbers.sort((a, b) => a - b); // [1, 2, 3, 10, 13, 22]
+numbers.sort((a, b) => b - a); // [22, 13, 10, 3, 2, 1]
+```
+
+### len(list)
+```python
+# PY
+names = ['Smith', 'Maria', 'John', 'Tracy']
+len(names) # 4
+```
+```javascript
+// JS
+var names = ['Smith', 'Maria', 'John', 'Tracy'];
+names.length // 4 
+```
+
+### copy
+```python
+# PY
+a = [1, 2, 3]
+b = a 
+b # [1, 2, 3]
+a[0] = 'a'
+a # ['a', 2, 3]
+b # ['a', 2, 3]
+
+a = [1, 2, 3]
+b = a.copy()
+c = list(a)
+d = a[:]
+a[0] = 'a'
+a # ['a', 2, 3]
+b # [1, 2, 3]
+c # [1, 2, 3]
+d # [1, 2, 3]
+```
+```javascript
+// JS
+var a = [1, 2, 3];
+b = a;
+b; // [1, 2, 3]
+a[0] = 'a';
+a; // ['a', 2, 3]
+b; // ['a', 2, 3]
+
+var a = [1, 2, 3];
+b = a.slice();
+c = [...a];
+a[0] = 'a';
+a; // ['a', 2, 3]
+b; // [1, 2, 3]
+c; // [1, 2, 3]
+```
+
+## Tuple
+### create tuple
+```python
+# PY
+empty_tuple = ()
+names = ('Emily', 'Sally', 'Tom')
+```
+
+### unpacking
+```python
+# PY
+names = ('Emily', 'Sally', 'Tom')
+a, b, c = names
+a # 'Emily'
+b # 'Sally'
+c # 'Tom'
+d # NameError: name 'x' is not defined
+
+a, b, c = c, a, b
+a # 'Tom'
+b # 'Emily'
+c # 'Sally'
 ```
 
 ## Conditions
