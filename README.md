@@ -44,17 +44,28 @@
   - [list.insert()](#list.insert())
   - [list.remove()](#list.remove())
   - [list.pop()](#list.pop())
-  - [del](#del)
+  - [del (list)](#del-(list))
   - [list.clear()](#list.clear())
   - [list.index()](#list.index())
-  - [in](#in)
+  - [in (list)](#in-(list))
   - [list.count()](#list.count())
   - [list.sort() / sorted(list)](#list.sort()-/-sorted(list))
   - [len(list)](#len(list))
-  - [copy](#copy)
+  - [list.copy()](#list.copy())
 - [Tuple](#Tuple)
   - [create tuple](#create-tuple)
   - [unpacking](#unpacking)
+- [Dictionary](#Dictionary)
+  - [create dictionary](#create-dictionary)
+  - [dict.update()](#dict.update())
+  - [del (dict)](#del-(dict))
+  - [dict.clear()](#dict.clear())
+  - [in (dict)](#in-(dict))
+  - [dict.get()](#dict.get())
+  - [dict.keys()](#dict.keys())
+  - [dict.values()](#dict.values())
+  - [dict.items()](#dict.items())
+  - [dict.copy()](#dict.copy())
 - [Conditions](#Conditions)
   - [If statement](#If-statement)
   - [short hand If](#short-hand-If)
@@ -586,7 +597,7 @@ var empty_array = [];
 empty_array.pop(); // undefined
 ```
 
-### del
+### del (list)
 ```python
 # PY
 alphabet = ['a', 'b', 'c', 'd', 'e']
@@ -632,7 +643,7 @@ var names = ['Smith', 'Maria', 'John', 'Tracy'];
 names.indexOf('Maria'); // 1
 ```
 
-### in
+### in (list)
 ```python
 # PY
 names = ['Smith', 'Maria', 'John', 'Tracy']
@@ -710,7 +721,7 @@ var names = ['Smith', 'Maria', 'John', 'Tracy'];
 names.length // 4 
 ```
 
-### copy
+### list.copy()
 ```python
 # PY
 a = [1, 2, 3]
@@ -770,6 +781,180 @@ a, b, c = c, a, b
 a # 'Tom'
 b # 'Emily'
 c # 'Sally'
+```
+
+## Dictionary
+### create dictionary
+```python
+# PY
+empty_dict = {}
+another_empty_dict = dict()
+
+lol = [['a', 'b'], ['c', 'd'], ['e', 'f']]
+dict(lol) # {'a': 'b', 'c': 'd', 'e': 'f'}
+
+lot = [('a', 'b'), ('c', 'd'), ('e', 'f')]
+dict(lot) # {'a': 'b', 'c': 'd', 'e': 'f'}
+
+tol = (['a', 'b'], ['c', 'd'], ['e', 'f'])
+dict(tol) # {'a': 'b', 'c': 'd', 'e': 'f'}
+
+los = ['ab', 'cd', 'ef']
+dict(los) # {'a': 'b', 'c': 'd', 'e': 'f'}
+
+tos = ('ab', 'cd', 'ef')
+dict(tos) # {'a': 'b', 'c': 'd', 'e': 'f'}
+```
+```javascript
+// JS
+var empty_obj = {};
+var another_empty_obj = new Object();
+var obj = {'a': 'b', 'c': 'd', 'e': 'f'}
+```
+
+### dict.update()
+```python
+# PY
+dict1 = {'a': 1}
+dict2 = {'b': 2}
+dict1.update(dict2)
+
+dict1 # {'a': 1, 'b': 2}
+dict2 # {'b': 2}
+```
+```javascript
+// JS
+var obj1 = {'a': 1};
+var obj2 = {'b': 2};
+Object.assign(obj1, obj2);
+
+obj1; // {a: 1, b: 2}
+obj2; // {b: 2}
+```
+
+### del (dict)
+```python
+# PY
+dict1 = {'a': 1, 'b': 2}
+del dict1['a']
+dict1 # {'b': 2}
+
+del dict1['c'] # KeyError: 'c'
+```
+```javascript
+// JS
+var obj = {'a': 1, 'b': 2}
+delete obj.a // true
+obj // {b: 2}
+
+delete obj.c // true
+obj // {b: 2}
+```
+
+### dict.clear()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2}
+dict1.clear()
+dict1 # {}
+
+dict1 = {'a': 1, 'b': 2}
+dict1 = {}
+dict1 # {}
+```
+
+### in (dict)
+```python
+# PY
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+'a' in dict1 # True
+'d' in dict1 # False
+```
+```javascript
+// JS
+var obj = {'a': 1, 'b': 2, 'c': 3}
+Object.keys(obj).includes('a') // true
+Object.keys(obj).includes('d') // false
+```
+
+### dict.get()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+
+dict1['a'] # 1
+dict1['c'] # KeyError: 'd'
+
+dict1.get('a') # 1
+dict1.get('d') # 아무것도 출력 안됨
+dict1.get('d', 'Nope') # 'Nope' -> 옵션값 지정 가능
+```
+```javascript
+// JS
+var obj = {'a': 1, 'b': 2, 'c': 3};
+obj.a; // a
+obj.d; // undefined
+```
+
+### dict.keys()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict1.keys() # dict_keys(['a', 'b', 'c'])
+```
+```javascript
+// JS
+var obj = {'a': 1, 'b': 2, 'c': 3};
+Object.keys(obj); // ["a", "b", "c"]
+```
+
+### dict.values()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict1.values() # dict_values([1, 2, 3])
+```
+```javascript
+// JS
+var obj = {'a': 1, 'b': 2, 'c': 3};
+Object.values(obj); // [1, 2, 3]
+```
+
+### dict.items()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict1.items() # dict_items([('a', 1), ('b', 2), ('c', 3)])
+```
+
+### dict.copy()
+```python
+# PY
+dict1 = {'a': 1, 'b': 2}
+dict2 = dict1
+dict1['b'] = 3
+dict1 # {'a': 1, 'b': 3}
+dict2 # {'a': 1, 'b': 3}
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = dict1.copy()
+dict1['b'] = 3
+dict1 # {'a': 1, 'b': 3}
+dict2 # {'a': 1, 'b': 2}
+```
+```javascript
+// JS
+var obj1 = {'a': 1, 'b': 2};
+obj2 = obj1;
+obj1.b = 3;
+obj1; // {a: 1, b: 3}
+obj2; // {a: 1, b: 3}
+
+var obj1 = {'a': 1, 'b': 2};
+obj2 = {...obj1};
+obj1.b = 3;
+obj1; // {a: 1, b: 3}
+obj2; // {a: 1, b: 2}
 ```
 
 ## Conditions
